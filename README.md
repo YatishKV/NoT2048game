@@ -3,6 +3,8 @@ An original spin-off of the classic web based single-player puzzle game 2048
 
 It was designed by Italian web developer [Gabriele Cirulli](https://github.com/gabrielecirulli).
 
+It is a fork of https://github.com/rajitbanerjee/2048-pygame and replacing the game logic and mechanics
+
 ## Getting Started
 1. Get Python 3.x and clone this repository
 2. Get [pip](https://www.makeuseof.com/tag/install-pip-for-python/), then install pygame:\
