@@ -17,7 +17,7 @@ It is a fork of https://github.com/rajitbanerjee/2048-pygame and replacing the g
 
 ## Moves
 1. NoT2048 is played on a gray 4×4 grid, with numbered tiles that slide when a player moves them using the **four arrow keys** or **W A S D**.
-2. Press **'n'** to **restart** the game.
+2. Press **'r'** to **restart** the game.
 3. Join the numbers and get the master tile to **1** to win!
 
 ## Game Rules
