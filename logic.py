@@ -75,7 +75,7 @@ def checkGameStatus(board, max_tile=2048):
 
 def fillTwoOrFour(board, iter=1):
     """
-    Randomly fill 2 or 4 in available spaces on the board.
+    Randomly fill 3 or 5 in available spaces on the board.
 
     Parameters:
         board (list): game board
