@@ -22,6 +22,15 @@ def move(direction, board):
         return moveRight(board)
 
 def swipe(x1,x2,y1,y2,board):
+    """
+    Function to impliment touch controlls.
+
+    Parameters:
+        x1,x2,y1,y2 (int): co-ordinates of the touch
+        board (list): game board
+    Returns:
+        board (list): updated game board
+    """
     if abs(x1 - x2) > abs(y1 - y2):
         if x1 - x2 > 0:
             return moveLeft(board)
@@ -32,7 +41,8 @@ def swipe(x1,x2,y1,y2,board):
         if y1 - y2 > 0:
             return moveUp(board)
         else:
-            return moveDown(board)              
+            return moveDown(board)
+    return board
             
 
 def checkGameStatus(board, max_tile=2048):

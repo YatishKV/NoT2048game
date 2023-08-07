@@ -10,8 +10,6 @@ from pygame.locals import *
 from logic import *
 import variables
 
-# TODO: Add a RULES button on start page
-# TODO: Add score keeping
 
 # set up pygame for main gameplay
 pygame.init()
@@ -23,30 +21,37 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
 def displayrules():
-    rules_font = pygame.font.SysFont(c["font"], 14, bold=True)
+    """
+    Display rules of the game when button is pressed.
+    """
+    rules_font = pygame.font.SysFont(c["font"], 20, bold=True)
     size = c["size"]
     # Fill the window with a transparent background
     s = pygame.Surface((size, size), pygame.SRCALPHA)
     s.fill(c["colour"]["light"]["over"])
     screen.blit(s, (0, 0))
-    screen.blit(rules_font.render(
-        "The Player's objective is to divide the main block(2048)"
-        , 1, BLACK), (10, 10))
-    screen.blit(rules_font.render(
-        "by combining it with the other blocks and bring it to 1."
-        , 1, BLACK), (10, 50))
-    screen.blit(rules_font.render(    
-        "Whenever the player makes a move, a new block with the"
-        , 1, BLACK), (10, 100))
-    screen.blit(rules_font.render(
-        "value of 3 or 5 will spawn. Any 2 blocks with different"
-        , 1, BLACK), (10, 150))
-    screen.blit(rules_font.render(    
-        "value can be combined and the new block created will have"
-        , 1, BLACK), (10, 200))
-    screen.blit(rules_font.render(
-        "the value of difference of the 2 blocks(eg.5-3=2)"
-        , 1, BLACK), (10, 250))
+
+    text = '''The Player's objective is to divide the main block(2048) \
+by combining it with the other blocks and bring it to 1. \
+Whenever the player makes a move, a new block with the \
+value of 3 or 5 will spawn. Any 2 blocks with different \
+value can be combined and the new block created will have \
+the value of difference of the 2 blocks(eg.5-3=2).'''
+
+    collection = [word.split() for word in text.splitlines()]
+    space = rules_font.size(' ')[0]
+    xpos,ypos = (20, 20)
+    for lines in collection:
+        for words in lines:
+            word_surface = rules_font.render(words,True,BLACK)
+            word_width, word_height = word_surface.get_size()
+            if xpos + word_width >= size-10:
+                xpos = 20
+                ypos += word_height + space
+            screen.blit(word_surface,(xpos,ypos))
+            xpos += word_width + space
+        xpos = 20
+        ypos += word_height 
 
     back = variables.Button(tuple(c["colour"]["light"]["2048"]),
                   220, 360, 65, 55, "BACK")
@@ -264,7 +269,7 @@ def playGame(theme, difficulty):
     while True:
         for event in pygame.event.get():
             if event.type == QUIT or \
-                    (event.type == pygame.KEYDOWN and event.key == K_q):
+                    (event.type == pygame.KEYDOWN and event.key in (K_q,K_ESCAPE)):
                 # exit if q is pressed
                 pygame.quit()
                 sys.exit()
