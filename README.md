@@ -1,4 +1,4 @@
-# NoT2048game
+# NoT 2048 
 An original spin-off of the classic web based single-player puzzle game 2048
 
 It was designed by Italian web developer [Gabriele Cirulli](https://github.com/gabrielecirulli).
